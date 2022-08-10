@@ -1,7 +1,7 @@
 push 1
-swap
 push 2
+nop
 push 3
 pall
-swap
+add
 pall
