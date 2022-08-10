@@ -2,7 +2,7 @@
 
 /**
  * free_stack_t - frees stack_t list
- * @stack: pointer to head node 
+ * @stack: pointer to head node
  */
 
 void free_stack_t(stack_t *stack)

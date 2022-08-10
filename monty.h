@@ -53,31 +53,14 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
 void free_stack_t(stack_t *stack);
 void instruction_checker(char **buffer, stack_t **stack, char *file);
 void push_error(stack_t **newNode, unsigned int line_number);
+void print_error(
+			unsigned int error_code,
+			char *file,
+			unsigned int line_number,
+			char *opcode
+			);
 
 #endif
-
-/**
- * Error codes - This code is passed into print_error to define which error code to print
- * 
- * 1 - Used if user does not give any file, or more than one arg to program.
- * Prints "USAGE: monty file" followed by new line,
- * and exits with status EXIT_FAILURE.
- * 
- * 2 - Used if it is not possible to open file.
- * Prints "Error: Can't open file <file>", followed by a new line,
- * and exits with the status EXIT_FAILURE.
- * 
- * 3 - Used if the file contains an invalid instruction.
- * Prints the error message "L<line_number>: unknown instruction <opcode>"",
- * followed by a new line, and exits with the status EXIT_FAILURE.
- * 
- * 12 - Used if malloc fails.
- * Prints the error message "Error: malloc failed",
- * followed by a new line, and exits with status EXIT_FAILURE.
- * 
- * print_error returns 1 on succcess
- */
