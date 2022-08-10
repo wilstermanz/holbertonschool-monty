@@ -10,6 +10,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack_t(*stack);
+		errno = 12;
 		return;
 	}
 	

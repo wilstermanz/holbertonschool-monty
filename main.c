@@ -17,34 +17,33 @@ instruction_t commands[] = {
 
 int main(int argc, char *argv[])
 {
-	unsigned int error_flag = 0;
 	char *buffer = NULL;
 	size_t buffsize = 0;
 	FILE *fp;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
-		error_flag = print_error(1, argv[1], 0, NULL);
+		print_error(1, argv[1], 0, NULL);
 
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
-		error_flag = print_error(2, argv[1], 0, NULL);
+		print_error(2, argv[1], 0, NULL);
 
-	while ((getline(&buffer, &buffsize, fp) != EOF) && (error_flag == 0))
+	while ((getline(&buffer, &buffsize, fp) != EOF) && (errno == 0))
 	{
 		if (buffer == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			error_flag = 1;
+			errno = 12;
 		}
-		error_flag = instruction_checker(&buffer, &stack, argv[1]);
+		instruction_checker(&buffer, &stack, argv[1]);
 	}
 
 	free_stack_t(stack);
 	free(buffer);
 	fclose(fp);
 
-	if (error_flag == 1)
+	if (errno != 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -58,7 +57,7 @@ int main(int argc, char *argv[])
  * Return: 0, or 1 on error
  */
 
-int instruction_checker(char **buffer, stack_t **stack, char *file)
+void instruction_checker(char **buffer, stack_t **stack, char *file)
 {
 	char *opcode = NULL;
 	unsigned int  line_number = 0, i, error_flag = 0;
@@ -75,14 +74,9 @@ int instruction_checker(char **buffer, stack_t **stack, char *file)
 		}
 		if (commands[i].opcode == NULL)
 		{
-			error_flag = print_error(3, file, line_number, opcode);
+			print_error(3, file, line_number, opcode);
 		}
 
 		free(*buffer);
 		*buffer = NULL;
-
-		if (errno != 0)
-			error_flag = 1;
-
-		return (error_flag);
 }
