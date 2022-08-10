@@ -1,12 +1,5 @@
 #include "monty.h"
 
-instruction_t commands[] = {
-	{"push", push},		{"pall", pall},
-//	{"pint", pint},		{"pop", swap},
-//	{"add", add},		{"nop", nop},
-	{NULL, NULL}
-};
-
 /**
  * main - Monty bitcode interpreter
  *
@@ -60,6 +53,12 @@ void instruction_checker(char **buffer, stack_t **stack, char *file)
 {
 	char *opcode = NULL;
 	unsigned int  line_number = 0, i, error_flag = 0;
+	instruction_t commands[] = {
+	{"push", push},		{"pall", pall},
+	/*{"pint", pint},*/		{"pop", pop},
+//	{"add", add},		{"nop", nop},
+	/*{"swap", swap},*/		{NULL, NULL}
+};
 
 	line_number++;
 		opcode = strtok(*buffer, " \n");

@@ -49,9 +49,15 @@ void push(stack_t **stack, unsigned int line_number)
 	*stack = newNode;
 }
 
-void push_error(stack_t **newNode, unsigned int line_number)
+/**
+ * push_error - prints error message, frees node, and sets errno
+ * @node: pointer to node
+ * @line_number: line number to print in error
+ */
+
+void push_error(stack_t **node, unsigned int line_number)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);
-	free(*newNode);
+	free(*node);
 	errno = 1;
 }
