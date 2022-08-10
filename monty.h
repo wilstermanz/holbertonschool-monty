@@ -56,6 +56,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
 void free_stack_t(stack_t *stack);
 void instruction_checker(char **buffer, stack_t **stack, char *file);
+void push_error(stack_t **newNode, unsigned int line_number);
 
 #endif
 
