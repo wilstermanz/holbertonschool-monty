@@ -57,7 +57,7 @@ void pall(stack_t **stack, unsigned int line_number);
 //void add(stack_t **stack, unsigned int line_number);
 //void nop(stack_t **stack, unsigned int line_number);
 char **parse(char *buffer);
-//void print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
+//int print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
 
 #endif
 
@@ -80,4 +80,5 @@ char **parse(char *buffer);
  * Prints the error message "Error: malloc failed",
  * followed by a new line, and exits with status EXIT_FAILURE.
  * 
+ * print_error returns 1 on succcess
  */

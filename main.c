@@ -9,19 +9,20 @@ instruction_t commands[] = {
 
 int main(int argc, char *argv[])
 {
-	unsigned int line_number = 0;
-	char *buffer = NULL, *opcode;
+	unsigned int line_number = 0, i, error_flag = 0;
+	char *buffer = NULL, *opcode = NULL;
 	size_t buffsize = 0;
 	FILE *fp;
-	int i;
 	stack_t *stack = malloc(sizeof(stack_t *));
 
+//	if (stack == NULL)
+//		error_flag = print_error(4, argv[0], line_number, opcode);
 //	if (argc != 2)
-//		print_error(1, argv[0], line_number, NULL);
+//		error_flag = print_error(1, argv[0], line_number, opcode);
 
 	fp = fopen(argv[1], "r");
 //	if (file == -1)
-//		print_error(2, argv[0], line_number, NULL);
+//		error_flag = print_error(2, argv[0], line_number, opcode);
 
 	while (getline(&buffer, &buffsize, fp) != EOF)
 	{
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
 	free(buffer);
 	free(stack);
 	fclose(fp);
-
+	if(error_flag == 1)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
