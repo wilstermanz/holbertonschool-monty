@@ -24,7 +24,6 @@
 
 /**
  * print_error - prints error code to stderr and sets errno
- * 
  * @error_code: error code 
  * @file: filename
  * @line_number: line number error occured on

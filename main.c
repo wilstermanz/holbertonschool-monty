@@ -55,9 +55,9 @@ void instruction_checker(char **buffer, stack_t **stack, char *file)
 	unsigned int  line_number = 0, i, error_flag = 0;
 	instruction_t commands[] = {
 	{"push", push},		{"pall", pall},
-	/*{"pint", pint},*/		{"pop", pop},
+	{"pint", pint},		{"pop", pop},
 //	{"add", add},		{"nop", nop},
-	/*{"swap", swap},*/		{NULL, NULL}
+	{"swap", swap},		{NULL, NULL}
 };
 
 	line_number++;

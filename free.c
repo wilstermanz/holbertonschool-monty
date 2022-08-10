@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * free_stack_t - frees stack_t list
+ * @stack: pointer to head node 
+ */
+
 void free_stack_t(stack_t *stack)
 {
 	stack_t *ptr = stack;
