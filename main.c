@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
  * @buffer: pointer to buffer storing line from .m file
  * @stack: pointer to head of stack_t list
  * @file: name of file being read
- * Return: 0, or 1 on error
  */
 
 void instruction_checker(char **buffer, stack_t **stack, char *file)
