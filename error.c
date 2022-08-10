@@ -35,9 +35,6 @@ int print_error(unsigned int error_code, char *file, unsigned int line_number, c
 		case 3 :
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			break;
-		case 4 :
-			fprintf(stderr, "Error: malloc failed\n");
-			break;
 	}
 	return (1);
 }

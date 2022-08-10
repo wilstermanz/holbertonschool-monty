@@ -32,6 +32,11 @@ int main(int argc, char *argv[])
 
 	while ((getline(&buffer, &buffsize, fp) != EOF) && (error_flag == 0))
 	{
+		if (buffer == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			error_flag = 1;
+		}
 		error_flag = instruction_checker(&buffer, &stack, argv[1]);
 	}
 
@@ -76,11 +81,8 @@ int instruction_checker(char **buffer, stack_t **stack, char *file)
 		free(*buffer);
 		*buffer = NULL;
 
-		if (*stack == NULL)
-		{
-			print_error(4, file, line_number, opcode);
+		if (errno != 0)
 			error_flag = 1;
-		}
 
 		return (error_flag);
 }

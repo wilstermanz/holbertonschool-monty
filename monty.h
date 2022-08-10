@@ -9,6 +9,7 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <string.h>
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -72,7 +73,7 @@ int instruction_checker(char **buffer, stack_t **stack, char *file);
  * Prints the error message "L<line_number>: unknown instruction <opcode>"",
  * followed by a new line, and exits with the status EXIT_FAILURE.
  * 
- * 4 - Used if malloc fails.
+ * 12 - Used if malloc fails.
  * Prints the error message "Error: malloc failed",
  * followed by a new line, and exits with status EXIT_FAILURE.
  * 
