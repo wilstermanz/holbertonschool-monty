@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 void instruction_checker(char **buffer, stack_t **stack, char *file)
 {
 	char *opcode = NULL;
-	unsigned int  line_number = 0, i, error_flag = 0;
+	unsigned int  line_number = 0, i;
 	instruction_t commands[] = {
 	{"push", push},		{"pall", pall},
 	{"pint", pint},		{"pop", pop},
