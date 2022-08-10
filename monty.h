@@ -42,11 +42,6 @@ typedef struct instruction_s
 
 /* Global Variable */
 
-typedef extern struct errinfo
-{
-
-}
-
 /* Function prototypes */
 
 void push(stack_t **stack, unsigned int line_number);

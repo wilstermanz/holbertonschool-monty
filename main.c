@@ -14,14 +14,15 @@ int main(int argc, char *argv[])
 	size_t buffsize = 0;
 	FILE *fp;
 	stack_t *stack = NULL;
-//	if (argc != 2)
-//		error_flag = print_error(1, argv[0], line_number, opcode);
+
+	if (argc != 2)
+		error_flag = print_error(1, argv[1], line_number, opcode);
 
 	fp = fopen(argv[1], "r");
-//	if (file == -1)
-//		error_flag = print_error(2, argv[0], line_number, opcode);
+	if (fp == NULL)
+		error_flag = print_error(2, argv[1], line_number, opcode);
 
-	while (getline(&buffer, &buffsize, fp) != EOF)
+	while ((getline(&buffer, &buffsize, fp) != EOF) && (error_flag == 0))
 	{
 		line_number++;
 		opcode = strtok(buffer, " \n");
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
 		}
 		if (commands[i].opcode == NULL)
 		{
-//			error_flag = print_error(3, argv[0], line_number, opcode);
+			error_flag = print_error(3, argv[1], line_number, opcode);
 		}
 
 		free(buffer);
