@@ -32,14 +32,19 @@ int main(int argc, char *argv[])
 				commands[i].f(&stack, line_number);
 				break;
 			}
-			if (commands[i].opcode == NULL)
-			{
-				error_flag = print_error(3, argv[0], line_number, opcode);
-			}
 		}
-		printf("line %d: ",  line_number);
-		printf("opcode %s ",  opcode);
-		printf("value %i\n", stack->n);
+		if (commands[i].opcode == NULL)
+		{
+			printf("Command not found\n");
+//			error_flag = print_error(3, argv[0], line_number, opcode);
+		}
+		else
+		{
+			printf("line %d: ",  line_number);
+			printf("opcode %s ",  opcode);
+			printf("value %i\n", stack->n);
+		}
+
 		free(buffer);
 		buffer = NULL;
 	}
