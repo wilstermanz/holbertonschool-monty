@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,18 +44,19 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Global Variable */
-extern char **args;
+
+extern stack_t *global_node;
 
 /* Function prototypes */
 
-//stack_t *push(stack_t **stack, unsigned int line_number);
-//void pall(stack_t **stack, unsigned int line_number);
-//int pint(stack_t **stack, unsigned int line_number);
-//stack_t *pop(stack_t **stack, unsigned int line_number);
-//stack_t *swap(stack_t **stack, unsigned int line_number);
-//int add(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+//void pint(stack_t **stack, unsigned int line_number);
+//void pop(stack_t **stack, unsigned int line_number);
+//void swap(stack_t **stack, unsigned int line_number);
+//void add(stack_t **stack, unsigned int line_number);
 //void nop(stack_t **stack, unsigned int line_number);
-char *parse(char *buffer);
+char **parse(char *buffer);
 //void print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
 
 #endif
