@@ -7,6 +7,14 @@ instruction_t commands[] = {
 	{NULL, NULL}
 };
 
+/**
+ * main - Monty bitcode interpreter
+ *
+ * @argc: number of args passed
+ * @argv: Array of args passed
+ * Return: EXIT_SUCCESS, or EXIT_FAILURE
+ */
+
 int main(int argc, char *argv[])
 {
 	unsigned int error_flag = 0;
@@ -30,10 +38,20 @@ int main(int argc, char *argv[])
 	free_stack_t(stack);
 	free(buffer);
 	fclose(fp);
-	if(error_flag == 1)
+
+	if (error_flag == 1)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
+
+/**
+ * instruction_checker - parses lines in file,
+ * and compares to instruction_t array to find function pointer.
+ * @buffer: pointer to buffer storing line from .m file
+ * @stack: pointer to head of stack_t list
+ * @file: name of file being read
+ * Return: 0, or 1 on error
+ */
 
 int instruction_checker(char **buffer, stack_t **stack, char *file)
 {
@@ -57,6 +75,12 @@ int instruction_checker(char **buffer, stack_t **stack, char *file)
 
 		free(*buffer);
 		*buffer = NULL;
+
+		if (*stack == NULL)
+		{
+			print_error(4, file, line_number, opcode);
+			error_flag = 1;
+		}
 
 		return (error_flag);
 }
