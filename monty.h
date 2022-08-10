@@ -42,6 +42,11 @@ typedef struct instruction_s
 
 /* Global Variable */
 
+typedef extern struct errinfo
+{
+
+}
+
 /* Function prototypes */
 
 void push(stack_t **stack, unsigned int line_number);
@@ -52,13 +57,13 @@ void pall(stack_t **stack, unsigned int line_number);
 //void add(stack_t **stack, unsigned int line_number);
 //void nop(stack_t **stack, unsigned int line_number);
 char **parse(char *buffer);
-//int print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
+int print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
 void free_stack_t(stack_t *stack);
 
 #endif
 
 /**
- * Error codes - This code is passed into perror to define which error code to print
+ * Error codes - This code is passed into print_error to define which error code to print
  * 
  * 1 - Used if user does not give any file, or more than one arg to program.
  * Prints "USAGE: monty file" followed by new line,
