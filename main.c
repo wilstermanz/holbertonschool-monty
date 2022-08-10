@@ -13,10 +13,7 @@ int main(int argc, char *argv[])
 	char *buffer = NULL, *opcode = NULL;
 	size_t buffsize = 0;
 	FILE *fp;
-	stack_t *stack = malloc(sizeof(stack_t *));
-
-//	if (stack == NULL)
-//		error_flag = print_error(4, argv[0], line_number, opcode);
+	stack_t *stack = NULL;
 //	if (argc != 2)
 //		error_flag = print_error(1, argv[0], line_number, opcode);
 
@@ -33,6 +30,11 @@ int main(int argc, char *argv[])
 			if (strcmp(opcode, commands[i].opcode) == 0)
 			{
 				commands[i].f(&stack, line_number);
+				break;
+			}
+			if (commands[i].opcode == NULL)
+			{
+				error_flag = print_error(3, argv[0], line_number, opcode);
 			}
 		}
 		printf("line %d: ",  line_number);
@@ -42,8 +44,8 @@ int main(int argc, char *argv[])
 		buffer = NULL;
 	}
 
+	free_stack_t(stack);
 	free(buffer);
-	free(stack);
 	fclose(fp);
 	if(error_flag == 1)
 		return (EXIT_FAILURE);

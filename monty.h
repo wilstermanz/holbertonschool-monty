@@ -9,10 +9,6 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -29,6 +25,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -45,8 +42,6 @@ typedef struct instruction_s
 
 /* Global Variable */
 
-extern stack_t *global_node;
-
 /* Function prototypes */
 
 void push(stack_t **stack, unsigned int line_number);
@@ -58,6 +53,7 @@ void pall(stack_t **stack, unsigned int line_number);
 //void nop(stack_t **stack, unsigned int line_number);
 char **parse(char *buffer);
 //int print_error(unsigned int error_code, char *file, unsigned int line_number, char *opcode);
+void free_stack_t(stack_t *stack);
 
 #endif
 
