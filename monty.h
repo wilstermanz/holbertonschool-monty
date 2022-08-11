@@ -54,8 +54,13 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void free_stack_t(stack_t *stack);
-void instruction_checker(char **buffer, stack_t **stack, char *file);
 void push_error(stack_t **newNode, unsigned int line_number);
+void instruction_checker(
+			char **buffer,
+			stack_t **stack,
+			char *file,
+			int line_number
+			);
 void print_error(
 			unsigned int error_code,
 			char *file,
